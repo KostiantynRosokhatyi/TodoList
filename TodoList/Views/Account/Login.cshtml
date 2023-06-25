@@ -1,0 +1,44 @@
+﻿@model TodoList.Models.Account
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Please login first</h2>
+
+            <form id="loginForm" method="post" action="@Url.Action("Login", "Account")" class="needs-validation" novalidate>
+                <div class="form-group mb-3">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="Username" class="form-control" required>
+                    <div class="invalid-feedback">Please enter your email</div>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="Password" class="form-control" required>
+                    <div class="invalid-feedback">Please enter your password</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block" disabled>Login</button>
+
+                <div class="validation-summary-errors">
+                   @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("loginForm");
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
+        var submitButton = document.querySelector("#loginForm button[type=submit]");
+
+        function updateSubmitButtonState() {
+            submitButton.disabled = !usernameInput.value || !passwordInput.value;
+        }
+
+        usernameInput.addEventListener("input", updateSubmitButtonState);
+        passwordInput.addEventListener("input", updateSubmitButtonState);
+    });
+</script>

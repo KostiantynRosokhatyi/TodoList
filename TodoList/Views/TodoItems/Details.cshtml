@@ -1,0 +1,47 @@
+﻿@model TodoList.Models.TodoItem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h1>Details</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">TodoItem</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ItemName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ItemName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ItemDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ItemDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsItemCompleted)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsItemCompleted)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.User)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.User.Id)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a> |
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
